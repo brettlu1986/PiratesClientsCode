@@ -1,0 +1,26 @@
+local DungeonQuitDialogType = {
+    Escort = 1,
+    ArenaDead = 2,
+    ArenaAlive = 3,
+    PVE01 = 4,
+    PVE02 = 5,
+    Smuggle = 6,
+    SocietyExplorer = 7,
+    SocietyPrivateer = 8,
+    SocietyGuard = 9,
+    SideQuest01 = 10,
+    JsonPVE = 11,
+    Faction = 12,
+    Provocative = 13,
+    DungeonPVE = 14,
+    CaptureFlag = 15,
+    Conquest = 16,
+    Association = 17,
+    WorldBoss = 18,
+    GuildBoss = 19,
+    ActivityPVE = 20,
+    FFA = 21,
+    TrainingCamp = 22,
+}
+
+return DungeonQuitDialogType

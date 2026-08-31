@@ -1,0 +1,49 @@
+--[[
+    DataTable类中必须有的成员变量与函数
+    szFileName : 文件名，不包含路径
+    Container: table
+    OnEditorParseLine： 解析函数，参数Parser
+
+    可选的变量与函数
+    OnEditorParseFinished: 参数无，本DataTable读取完毕后触发
+    OnGameRequired: 参数无，游戏运行时第一次require时触发
+    OnEditorDefine: 定义导出参数    自定义导出标签：
+         导出单行：-- [EXPORT] 
+         导出多行：-- [EXPORT BEGIN] 和 -- [EXPORT END]
+--]]
+local ShotMontageDataTable = {}
+
+ShotMontageDataTable.szFileName = "client/res/camerashot/shot_montage_res.tab"
+
+function ShotMontageDataTable:OnEditorDefine(Parser)
+    Parser:SetKey("nID")
+    Parser:Define("nID", "id", -1, Parser.TypeInt)
+    Parser:Define("szActionName", "action_name", "", Parser.TypeString)
+    Parser:Define("bHuman", "action_type", 1, Parser.TypeInt)
+end
+
+-- [EXPORT BEGIN]
+function ShotMontageDataTable:GetHumanMontageData()
+    local tbData = {}
+    for _, v in pairs(self.tbContainer) do
+        if v.bHuman then
+            table.insert(tbData, v)
+        end
+    end
+    return tbData
+end
+-- [EXPORT END]
+
+-- [EXPORT BEGIN]
+function ShotMontageDataTable:GetShipMontageData()
+    local tbData = {}
+    for _, v in pairs(self.tbContainer) do
+        if not v.bHuman then
+            table.insert(tbData, v)
+        end
+    end
+    return tbData
+end
+-- [EXPORT END]
+
+return ShotMontageDataTable

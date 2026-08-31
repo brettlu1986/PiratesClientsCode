@@ -1,0 +1,3 @@
+local ActivationCodeHelper = {}
+
+return ActivationCodeHelper

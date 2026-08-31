@@ -1,0 +1,9 @@
+#include "GameActorShell.h"
+
+DEFINE_LOG_CATEGORY_STATIC(UGameActorShellLog, Log, All)
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+void UGameActorShell::Init() 
+{
+}
+
